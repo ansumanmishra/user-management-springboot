@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+    <!--<localRepository>/localRepository</localRepository>-->
+    <!--does not work well with the Intellij integration-->
+    <!--will writ to /Applications/IntelliJ IDEA.app/Contents/bin/localRepository-->
+
+
+    <proxies>
+        <proxy>
+            <id>swisscom_http_proxy</id>
+            <active>true</active>
+            <protocol>http</protocol>
+            <host>clientproxy.corproot.net</host>
+            <port>8079</port>
+            <nonProxyHosts>
+                api.scapp-console.swisscom.com|*.internal|*.corproot.net|artifactory.swisscom.com
+            </nonProxyHosts>
+        </proxy>
+        <proxy>
+            <id>swisscom_https_proxy</id>
+            <active>true</active>
+            <protocol>https</protocol>
+            <host>clientproxy.corproot.net</host>
+            <port>8079</port>
+            <nonProxyHosts>
+                api.scapp-console.swisscom.com|*.internal|*.corproot.net|artifactory.swisscom.com
+            </nonProxyHosts>
+        </proxy>
+    </proxies>
+    <servers>
+        <server>
+            <id>plm-squad.internal.repo</id>
+            <username>plm-technical</username>
+            <password>plmtechnicaluser</password>
+        </server>
+
+        <server>
+            <id>plm-sit-cloudfoundry-instance</id>
+            <username>plm-sit-com.user.usermanagement.user</username>
+            <password>KnPmmT5W2wFfzZaz</password>
+        </server>
+
+        <!--git server is used by the multi-module-maven-release-plugin-->
+        <server>
+            <id>git-server</id>
+            <privateKey>~/.ssh/id_rsa</privateKey>
+        </server>
+
+        <server>
+            <!-- com.user.usermanagement.user required for docker-maven-plugin to push to docker registry -->
+            <id>plmapp-docker.artifactory.swisscom.com</id>
+            <username>plm-technical</username>
+            <password>plmtechnicaluser</password>
+        </server>
+
+    </servers>
+    <mirrors>
+        <mirror>
+            <id>central</id>
+            <name>Swisscom mirror of central repo</name>
+            <url>https://artifactory.swisscom.com/remote-repos/</url>
+            <mirrorOf>central</mirrorOf>
+        </mirror>
+    </mirrors>
+</settings>
