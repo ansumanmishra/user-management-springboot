@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 @Service
 public class UserService {
 
-    private ArrayList<User> users = new ArrayList<>(Arrays.asList(
+    private List<User> users = new ArrayList<>(Arrays.asList(
             new User("1", "John", "USA"),
             new User("2", "Jack", "Switzerland"),
             new User("3", "Smith", "France")
@@ -24,9 +24,11 @@ public class UserService {
         return users.stream().filter(user -> user.getId().equals(id)).collect(Collectors.toList());
     }
 
-
-    public List<User> addUser(User user) {
-        users.add(user);
+    List<User> addUser(User user) {
+        List<User> isExistUser = users.stream().filter(x -> x.getId().equals(user.getId())).collect(Collectors.toList());
+        if (isExistUser.size() < 1) {
+            users.add(user);
+        }
         return users;
     }
 }
