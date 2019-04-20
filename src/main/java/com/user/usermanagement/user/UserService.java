@@ -31,4 +31,9 @@ public class UserService {
         }
         return users;
     }
+
+    List<User> deleteUser(String id) {
+        users.removeIf(users -> users.getId().equals(id));
+        return users;
+    }
 }

@@ -29,4 +29,9 @@ public class UserController {
     public List<User> getUsersById(@RequestBody User user) {
         return userService.addUser(user);
     }
+
+    @RequestMapping(value = "/users/{id}", method = RequestMethod.DELETE)
+    public List<User> deleteUser(@PathVariable String id) {
+        return userService.deleteUser(id);
+    }
 }
