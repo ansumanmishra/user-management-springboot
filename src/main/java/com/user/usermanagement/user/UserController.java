@@ -34,4 +34,9 @@ public class UserController {
     public List<User> deleteUser(@PathVariable String id) {
         return userService.deleteUser(id);
     }
+
+    @RequestMapping(value = "/users/{id}", method = RequestMethod.PUT)
+    public List<User> editUser(@RequestBody User user, @PathVariable String id) {
+        return userService.editUser(id, user);
+    }
 }

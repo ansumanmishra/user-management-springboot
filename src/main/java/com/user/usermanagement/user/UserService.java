@@ -36,4 +36,14 @@ public class UserService {
         users.removeIf(users -> users.getId().equals(id));
         return users;
     }
+
+    List<User> editUser(String id, User user) {
+        for (int i = 0; i < users.size(); i++) {
+            User tempUser = users.get(i);
+            if(tempUser.getId().equals(id)) {
+                users.set(i, user);
+            }
+        }
+        return users;
+    }
 }
