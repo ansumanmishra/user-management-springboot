@@ -1,20 +1,16 @@
 package com.user.usermanagement.todo;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class TodoService {
 
     private final TodoRepository todoRepository;
-
-    @Autowired
-    public TodoService(TodoRepository todoRepository) {
-        this.todoRepository = todoRepository;
-    }
 
     List<Todo> getAllTodos() {
         return todoRepository.findAll();
