@@ -17,7 +17,7 @@ public class TodoController {
     }
 
     @RequestMapping("/todos")
-    public List<Todo> getTodos() {
+    public List<TodoDto> getTodos() {
         return todoService.getAllTodos();
     }
 
@@ -27,7 +27,7 @@ public class TodoController {
     }
 
     @RequestMapping(value = "/todos", method = RequestMethod.POST)
-    public List<Todo> addTodo(@RequestBody Todo todo) {
+    public List<TodoDto> addTodo(@RequestBody Todo todo) {
         return todoService.addTodo(todo);
     }
 

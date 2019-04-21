@@ -6,14 +6,26 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import static java.util.stream.Collectors.toList;
+
 @Service
 @AllArgsConstructor
 public class TodoService {
 
     private final TodoRepository todoRepository;
 
-    List<Todo> getAllTodos() {
-        return todoRepository.findAll();
+    List<TodoDto> getAllTodos() {
+        List<Todo> todoData = todoRepository.findAll();
+        return todoData.stream().map(this::mapToDto).collect(toList());
+    }
+
+    private TodoDto mapToDto(Todo todo) {
+        TodoDto todoDto = new TodoDto();
+        todoDto.setId(todo.id);
+        todoDto.setTitle(todo.title);
+        todoDto.setDescription(todo.description);
+
+        return todoDto;
     }
 
     ResponseEntity<Todo> getTodosById(String id) {
@@ -22,7 +34,8 @@ public class TodoService {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    List<Todo> addTodo(Todo todo) {
+    List<TodoDto> addTodo(Todo todo) {
+        todo.setStatus("Active");
         todoRepository.insert(todo);
         return getAllTodos();
     }
