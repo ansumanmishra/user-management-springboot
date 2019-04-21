@@ -1,6 +1,7 @@
 package com.user.usermanagement.todo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,7 +22,7 @@ public class TodoController {
     }
 
     @RequestMapping("/todos/{id}")
-    public List<Todo> getTodoById(@PathVariable String id) {
+    public ResponseEntity<Todo> getTodoById(@PathVariable String id) {
         return todoService.getTodosById(id);
     }
 
@@ -31,12 +32,12 @@ public class TodoController {
     }
 
     @RequestMapping(value = "/todos/{id}", method = RequestMethod.DELETE)
-    public List<Todo> deleteTodo(@PathVariable String id) {
+    public ResponseEntity<?> deleteTodo(@PathVariable String id) {
         return todoService.deleteTodo(id);
     }
 
     @RequestMapping(value = "/todos/{id}", method = RequestMethod.PUT)
-    public List<Todo> editTodo(@RequestBody Todo todo, @PathVariable String id) {
+    public ResponseEntity<Todo> editTodo(@RequestBody Todo todo, @PathVariable String id) {
         return todoService.editTodo(id, todo);
     }
 }
