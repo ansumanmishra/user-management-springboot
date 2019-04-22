@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 public class TodoDto {
     private String id;
 
-    @NotNull
+    @NotNull(message = "Title should not be blank")
     private String title;
     private String description;
 }

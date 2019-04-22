@@ -1,9 +1,9 @@
 package com.user.usermanagement.todo.controller;
 
-import com.user.usermanagement.todo.entity.Todo;
-import com.user.usermanagement.todo.service.TodoService;
 import com.user.usermanagement.todo.dto.TodoDto;
+import com.user.usermanagement.todo.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,7 +29,7 @@ public class TodoController {
     }
 
     @RequestMapping(value = "/todos", method = RequestMethod.POST)
-    public List<TodoDto> addTodo(@RequestBody Todo todo) {
+    public List<TodoDto> addTodo(@Validated @RequestBody TodoDto todo) {
         return todoService.addTodo(todo);
     }
 
@@ -39,7 +39,7 @@ public class TodoController {
     }
 
     @RequestMapping(value = "/todos/{id}", method = RequestMethod.PUT)
-    public List<TodoDto> editTodo(@RequestBody Todo todo, @PathVariable String id) {
+    public List<TodoDto> editTodo(@RequestBody TodoDto todo, @PathVariable String id) {
         return todoService.editTodo(id, todo);
     }
 }
