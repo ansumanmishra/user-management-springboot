@@ -1,5 +1,8 @@
-package com.user.usermanagement.todo;
+package com.user.usermanagement.todo.service;
 
+import com.user.usermanagement.todo.entity.Todo;
+import com.user.usermanagement.todo.dao.TodoRepository;
+import com.user.usermanagement.todo.dto.TodoDto;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +12,7 @@ import static java.util.stream.Collectors.toList;
 
 @Service
 @AllArgsConstructor
-class TodoService {
+public class TodoService {
 
     private final TodoRepository todoRepository;
 
@@ -44,7 +47,7 @@ class TodoService {
         return getAllTodos();
     }
 
-    List<TodoDto> editTodo(String id, Todo todo) {
+    public List<TodoDto> editTodo(String id, Todo todo) {
         todoRepository.save(todo);
         return getAllTodos();
     }

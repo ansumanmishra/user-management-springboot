@@ -1,4 +1,4 @@
-package com.user.usermanagement.todo;
+package com.user.usermanagement.todo.entity;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
