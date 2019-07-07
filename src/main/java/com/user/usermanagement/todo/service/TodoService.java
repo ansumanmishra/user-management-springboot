@@ -3,6 +3,7 @@ package com.user.usermanagement.todo.service;
 import com.user.usermanagement.todo.dao.TodoRepository;
 import com.user.usermanagement.todo.dto.TodoDto;
 import com.user.usermanagement.todo.entity.Todo;
+import com.user.usermanagement.todo.mapper.TodoMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,7 @@ import static java.util.stream.Collectors.toList;
 public class TodoService {
 
     private final TodoRepository todoRepository;
+    private final TodoMapper todoMapper;
 
     public List<TodoDto> getAllTodos() {
         List<Todo> todoData = todoRepository.findAll();
@@ -22,12 +24,7 @@ public class TodoService {
     }
 
     private TodoDto mapToDto(Todo todo) {
-        TodoDto todoDto = new TodoDto();
-        todoDto.setId(todo.id);
-        todoDto.setTitle(todo.title);
-        todoDto.setDescription(todo.description);
-
-        return todoDto;
+        return todoMapper.mapToTodoDto(todo);
     }
 
     public List<TodoDto> getTodosById(String id) {
@@ -57,7 +54,7 @@ public class TodoService {
         Todo todoData = new Todo();
         todoData.setStatus("Active");
         todoData.setId(todo.getId());
-        todoData.setTitle(todo.getTitle());
+        todoData.setTodoTitle(todo.getTitle());
         todoData.setDescription(todo.getDescription());
 
         return todoData;

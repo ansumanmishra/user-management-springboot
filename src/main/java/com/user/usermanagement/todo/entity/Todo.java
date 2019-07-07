@@ -10,7 +10,7 @@ public class Todo {
     @Id
     public String id;
 
-    public String title;
+    public String todoTitle;
     public String description;
     public String status;
 }
