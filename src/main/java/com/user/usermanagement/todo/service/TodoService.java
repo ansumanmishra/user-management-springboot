@@ -24,7 +24,7 @@ public class TodoService {
     }
 
     private TodoDto mapToDto(Todo todo) {
-        return todoMapper.mapToTodoDto(todo);
+        return todoMapper.mapToDto(todo);
     }
 
     public List<TodoDto> getTodosById(String id) {
@@ -51,6 +51,8 @@ public class TodoService {
     }
 
     private Todo setTodoData(TodoDto todo) {
+        return todoMapper.mapToEntity(todo);
+        /*
         Todo todoData = new Todo();
         todoData.setStatus("Active");
         todoData.setId(todo.getId());
@@ -58,5 +60,6 @@ public class TodoService {
         todoData.setDescription(todo.getDescription());
 
         return todoData;
+        */
     }
 }

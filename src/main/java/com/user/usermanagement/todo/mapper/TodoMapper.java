@@ -10,7 +10,13 @@ import org.mapstruct.Mappings;
 public interface TodoMapper {
 
     @Mappings({
-        @Mapping(target = "title", source = "todoTitle")
+            @Mapping(target = "title", source = "todoTitle")
     })
-    TodoDto mapToTodoDto(Todo todo);
+    TodoDto mapToDto(Todo todo);
+
+    @Mappings({
+        @Mapping(target = "todoTitle", source = "title"),
+        @Mapping(target = "status", defaultValue = "Active", ignore = true)
+    })
+    Todo mapToEntity(TodoDto todoDto);
 }
