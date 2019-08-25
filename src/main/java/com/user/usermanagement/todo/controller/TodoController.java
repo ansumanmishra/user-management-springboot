@@ -19,8 +19,8 @@ public class TodoController {
     }
 
     @RequestMapping("/")
-    public List<TodoDto> getTodosInRoot() {
-        return todoService.getAllTodos();
+    public String getTodosInRoot() {
+        return "Hello world! Spring boot app deployed to Heroku";
     }
 
     @RequestMapping("/todos")
