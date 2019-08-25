@@ -18,6 +18,11 @@ public class TodoController {
         this.todoService = todoService;
     }
 
+    @RequestMapping("/")
+    public List<TodoDto> getTodosInRoot() {
+        return todoService.getAllTodos();
+    }
+
     @RequestMapping("/todos")
     public List<TodoDto> getTodos() {
         return todoService.getAllTodos();

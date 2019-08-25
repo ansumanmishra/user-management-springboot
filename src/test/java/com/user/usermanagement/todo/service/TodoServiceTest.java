@@ -12,5 +12,5 @@ public class TodoServiceTest {
     public void first_test() {
         assertEquals(2, 2);
     }
-    
+
 }
